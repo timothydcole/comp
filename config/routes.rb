@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'application#index'
+  get '/merchant', to: 'merchants#index'
+  get '/customer', to: 'customers#index' 
 
 end
