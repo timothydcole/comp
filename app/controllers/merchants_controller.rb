@@ -26,7 +26,7 @@ class MerchantsController < ApplicationController
   # POST /merchants.json
   def create
     @merchant = Merchant.new(merchant_params)
-    @mercant.user = current_user
+    @merchant.user = current_user
     respond_to do |format|
       if @merchant.save
         format.html { redirect_to @merchant, notice: 'Merchant was successfully created.' }

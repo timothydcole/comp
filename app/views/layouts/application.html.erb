@@ -11,10 +11,14 @@
 
   <body>
     <nav>
+      <% if user_signed_in? %>
       <li class="logo"><a href="">[Logo]</a></li>
       <li class="left"><a href="">Jobs</a></li>
-      <li class="right"><a href="">Signup</a></li>
-      <li class="right"><a href="">Login</a></li>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>        
+      <% end %>
+      <li class="right"><a href=<%= %>>Signup</a></li>
+      <li class="right"><a href="<%= %>">Login</a></li>
+
     </nav>
     <%= yield %>
   </body>
