@@ -11,6 +11,8 @@ class MerchantsController < ApplicationController
   # GET /merchants/1
   # GET /merchants/1.json
   def show
+    @merchant.views += 1
+    @merchant.save!
   end
 
   # GET /merchants/new
@@ -70,6 +72,6 @@ class MerchantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def merchant_params
-      params.require(:merchant).permit(:title, :description, :user_id)
+      params.require(:merchant).permit(:title, :description, :user_id, :image, :price)
     end
 end

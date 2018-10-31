@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @merchant.user %>
+  <strong>Price:</strong>
+  <%= @merchant.price %>
 </p>
 
 <%= form_tag charges_path do %>
@@ -33,6 +33,17 @@
           data-currency="AUD"
           data-locale="auto"></script>
 <% end %>
+<p>
+  <strong>Photos:</strong>
+  <%= image_tag @merchant.image, width:'250'%>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @merchant.views %>
+</p>
+
+
 
 
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |

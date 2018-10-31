@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'dotenv-rails', groups: [:development, :test]
 ruby '2.4.1'
-gem 'aws-sdk'
+gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'pundit'
 gem 'geocoder'
