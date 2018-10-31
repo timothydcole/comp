@@ -11,9 +11,21 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @merchant.user %>
+  <strong>Price:</strong>
+  <%= @merchant.price %>
 </p>
+
+<p>
+  <strong>Photos:</strong>
+  <%= image_tag @merchant.image, width:'250'%>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @merchant.views %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
 <%= link_to 'Back', merchants_path %>
