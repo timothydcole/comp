@@ -14,13 +14,13 @@ def create
 
   charge = Stripe::Charge.create(
     :customer    => customer.id,
-    :amount      => @product.price, ##change to this
-    :description => @product.title, #add this
+    :amount      => @merchant.price, ##change to this
+    :description => @merchant.title, #add this
     :description => 'Rails Stripe customer',
     :currency    => 'aud'
   )
 
-  ProductMailer.with(user: current_user, product: @product).new_purchase.deliver_now
+  ProductMailer.with(user: current_user, product: @merchant).new_purchase.deliver_now
 
 
 rescue Stripe::CardError => e
