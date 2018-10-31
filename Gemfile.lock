@@ -675,6 +675,9 @@ GEM
       responders
       warden (~> 1.2.3)
     dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     execjs (2.7.0)
     faraday (0.15.3)
@@ -817,7 +820,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  dotenv
+  dotenv-rails
   geocoder
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -839,4 +842,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.4
+   1.16.5
