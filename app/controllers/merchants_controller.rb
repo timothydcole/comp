@@ -29,6 +29,7 @@ class MerchantsController < ApplicationController
   def create
     @merchant = Merchant.new(merchant_params)
     @merchant.user = current_user
+    @merchant.price = @merchant.price.to_f * 100.0
     respond_to do |format|
       if @merchant.save
         format.html { redirect_to @merchant, notice: 'Merchant was successfully created.' }
@@ -72,6 +73,6 @@ class MerchantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def merchant_params
-      params.require(:merchant).permit(:title, :description, :user_id, :image, :price)
+      params.require(:merchant).permit(:title, :description, :user_id, :image, :price, :location)
     end
 end
