@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root 'application#index'
   get '/merchant', to: 'merchants#index'
-  get '/customer', to: 'customers#index' 
+  get '/customer', to: 'customers#index'
+  get '/search', to: 'merchants#search'
 
 end

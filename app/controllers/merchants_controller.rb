@@ -20,6 +20,10 @@ class MerchantsController < ApplicationController
     @merchant = Merchant.new
   end
 
+  def search
+    @merchants = Merchant.where("title LIKE ? OR description LIKE ?", "#{params[:q]}%", "% #{params[:q]}%")
+  end
+
   # GET /merchants/1/edit
   def edit
   end
