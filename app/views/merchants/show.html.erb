@@ -27,13 +27,17 @@
   </article>
 
   <%= hidden_field_tag(:product_id, @merchant.id) %>
-
+<% if user_signed_in? %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= @merchant.title %>"
           data-amount="<%= @merchant.price %>"
           data-currency="AUD"
           data-locale="auto"></script>
+<% else %>
+<%= link_to '<button type="button">You must be logged in to purchase</button>'.html_safe, new_user_session_path %>
+<% end %>
+
 <% end %>
 <p>
   <strong>Photos:</strong>

@@ -1,6 +1,5 @@
 class MerchantsController < ApplicationController
   before_action :set_merchant, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /merchants
   # GET /merchants.json
@@ -17,6 +16,7 @@ class MerchantsController < ApplicationController
 
   # GET /merchants/new
   def new
+      before_action :authenticate_user!
     @merchant = Merchant.new
   end
 
@@ -32,6 +32,7 @@ class MerchantsController < ApplicationController
   # POST /merchants
   # POST /merchants.json
   def create
+      before_action :authenticate_user!
     @merchant = Merchant.new(merchant_params)
     @merchant.user = current_user
     @merchant.price = @merchant.price.to_f * 100.0
@@ -49,6 +50,7 @@ class MerchantsController < ApplicationController
   # PATCH/PUT /merchants/1
   # PATCH/PUT /merchants/1.json
   def update
+      before_action :authenticate_user!
     respond_to do |format|
       if @merchant.update(merchant_params)
         format.html { redirect_to @merchant, notice: 'Merchant was successfully updated.' }
@@ -63,6 +65,7 @@ class MerchantsController < ApplicationController
   # DELETE /merchants/1
   # DELETE /merchants/1.json
   def destroy
+    before_action :authenticate_user!
     @merchant.destroy
     respond_to do |format|
       format.html { redirect_to merchants_url, notice: 'Merchant was successfully destroyed.' }
