@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+<style>
+body {
+  background-color: lightblue;
+  margin : 0;
+}
+h1 {
+    text-align: center;
+  }
+
+p {
+  text-align: center;
+}
+</style>
+
+  <body>
+    <h1>Congratulations on your purchase!</h1>
+    <p>
+      Thanks for buying
+      <%= @merchant.title %> <br/>for <%= number_to_currency(@merchant.price/100.0) %>
+
+    </p>
+  </body>
+</html>

@@ -14,7 +14,7 @@ def create
 
   charge = Stripe::Charge.create(
     :customer    => customer.id,
-    :amount      => @merchant.price, ##change to this
+    :amount      => @merchant.price.to_i, ##change to this
     :description => @merchant.title, #add this
     :description => 'Rails Stripe customer',
     :currency    => 'aud'
@@ -23,10 +23,10 @@ def create
   ProductMailer.with(user: current_user, product: @merchant).new_purchase.deliver_now
 
 
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to new_charge_path
-end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+  end
 
 
 
