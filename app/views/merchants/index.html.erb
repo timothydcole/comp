@@ -24,7 +24,7 @@
       <tr>
         <td><%= merchant.title %></td>
         <td><%= merchant.description %></td>
-        <td>@<%= merchant.user.name %></td>
+        <td>@<a href="/profile/<%=merchant.user.id%>"><%= merchant.user.name %></a></td>
         <td><%= number_to_currency(merchant.price.to_f/100.0) %></td>
         <td><%= image_tag merchant.image, width:'50'%></td>
         <td><%= merchant.location %></td>

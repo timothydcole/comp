@@ -1,0 +1,5 @@
+<hr>
+<h1> <%=@user.name%>'s Profile </h1>
+[Profile Picture]<br>
+<%= @user.name %><br>
+Member since <%= time_ago_in_words(@user.created_at) %><br>

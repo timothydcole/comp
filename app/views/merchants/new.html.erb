@@ -1,5 +1,16 @@
 <h1>Advertise your service</h1>
 
 <%= render 'form', merchant: @merchant %>
+<input type="text" id="location">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=[YOUR_KEY_HERE]&libraries=places"></script>
+<script src="javascripts/scripts.js"></scripts>
 
+$(document).ready(function () {
+   google.maps.event.addDomListener(window, 'load', initialize);
+});
+
+function initialize() {
+    var input = document.getElementById('location');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+}
 <%= link_to 'Back', merchants_path %>

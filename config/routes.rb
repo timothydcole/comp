@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/customer', to: 'customers#index'
   get '/search', to: 'merchants#search'
   get '/profile', to: 'customers#profile'
+  get '/profile/:id', to: 'customers#public_profile'
 
 end

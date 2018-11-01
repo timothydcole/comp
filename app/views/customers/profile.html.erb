@@ -9,6 +9,7 @@
 <%= @user.name %><br>
 Member since <%= time_ago_in_words(@user.created_at) %><br>
 
+<a href="/users/edit"><button>Edit Profile</button></a>
 <h1> Open Ads (<%= @adlength %>)</h1>
 
 <% if @adlength > 0 %>
