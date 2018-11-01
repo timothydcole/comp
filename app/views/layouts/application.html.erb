@@ -4,22 +4,28 @@
     <title>Comp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <nav>
-      <% if user_signed_in? %>
-      <li class="logo"><a href="">[Logo]</a></li>
-      <li class="left"><a href="">Jobs</a></li>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>        
-      <% end %>
-      <li class="right"><a href=<%= %>>Signup</a></li>
-      <li class="right"><a href="<%= %>">Login</a></li>
 
+      <%= link_to '[Logo]', root_path %>
+      <%= link_to 'View Services', merchants_path %>
+      <%= link_to 'Request Services', customers_path %>
+      |
+      <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path%>
+        <%= link_to 'Register', new_user_registration_path%>
+      <% end %>
+    <%= link_to 'Advertise Services', new_merchant_path %>
     </nav>
+    <% if user_signed_in? %>
+    Welcome, <%= current_user.email %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
