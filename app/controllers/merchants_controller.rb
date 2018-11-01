@@ -22,6 +22,7 @@ class MerchantsController < ApplicationController
 
   def search
     @merchants = Merchant.where("title LIKE ? OR description LIKE ?", "#{params[:q]}%", "% #{params[:q]}%")
+    @result_length = @merchants.length
   end
 
   # GET /merchants/1/edit

@@ -1,36 +1,48 @@
 <p id="notice"><%= notice %></p>
-
+<form action="http://localhost:3000/search">
+  <input type="text" name="q" placeholder="Find Services">
+  <input type="submit" value="Search">
+</form>
+<hr>
 <h1>Merchants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Picture</th>
-      <th>Location</th>
-      <th>Views</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @merchants.each do |merchant| %>
+<%if @result_length > 0 %>
+  <h5> Showing <%= @result_length %> result(s) </h5>
+  <table>
+    <thead>
       <tr>
-        <td><%= merchant.title %></td>
-        <td><%= merchant.description %></td>
-        <td><%= number_to_currency(merchant.price.to_f/100.0) %></td>
-        <td><%= image_tag merchant.image, width:'50'%></td>
-        <td><%= merchant.location %></td>
-        <td><%= merchant.views %></td>
-        <td><%= link_to 'Show', merchant %></td>
-        <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>
-        <td><%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Picture</th>
+        <th>Location</th>
+        <th>Views</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @merchants.each do |merchant| %>
+        <tr>
+          <td><%= merchant.title %></td>
+          <td><%= merchant.description %></td>
+          <td><%= number_to_currency(merchant.price.to_f/100.0) %></td>
+          <td><%= image_tag merchant.image, width:'50'%></td>
+          <td><%= merchant.location %></td>
+          <td><%= merchant.views %></td>
+          <td><%= link_to 'Show', merchant %></td>
+          <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>
+          <td><%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <h5> No results found! </h5>
+<% end %>
+
+
+
 
 
 

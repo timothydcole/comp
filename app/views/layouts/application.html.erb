@@ -23,6 +23,9 @@
       <% end %>
     <%= link_to 'Advertise Services', new_merchant_path %>
     </nav>
+    <% if user_signed_in? %>
+    Welcome, <%= current_user.email %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
