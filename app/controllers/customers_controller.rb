@@ -6,6 +6,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def public_profile
     @user = User.find(params[:id])
+    if(Merchant.exists?(user_id: @user.id))
+      @ads = Merchant.where(user_id: @user.id)
+      @adlength = @ads.length
+    else
+      @adlength = 0
+    end
   end
 
   def profile
