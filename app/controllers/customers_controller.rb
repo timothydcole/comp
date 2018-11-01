@@ -5,9 +5,9 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def public_profile
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
-  
+
   def profile
     @user = User.find(current_user.id)
     if(Merchant.exists?(user_id: current_user.id))
