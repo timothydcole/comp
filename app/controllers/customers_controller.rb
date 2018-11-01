@@ -4,6 +4,23 @@ class CustomersController < ApplicationController
 
   # GET /customers
   # GET /customers.json
+
+  def profile
+    @user = User.find(current_user.id)
+    if(Merchant.exists?(user_id: current_user.id))
+      @ads = Merchant.where(user_id: current_user.id)
+      @adlength = @ads.length
+    else
+      @adlength = 0
+    end
+    if(Customer.exists?(user_id: current_user.id))
+      @purchases = Merchant.where(user_id: current_user.id)
+      @purchaselength = @purchases.length
+    else
+      @purchaselength = 0
+    end
+  end
+
   def index
     @customers = Customer.all
   end

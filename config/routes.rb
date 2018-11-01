@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/merchant', to: 'merchants#index'
   get '/customer', to: 'customers#index'
   get '/search', to: 'merchants#search'
+  get '/profile', to: 'customers#profile'
 
 end
