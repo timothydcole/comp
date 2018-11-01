@@ -16,6 +16,7 @@
       <%= link_to 'Request Services', customers_path %>
       |
       <% if user_signed_in? %>
+      <%= link_to 'Profile', '/profile'%>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Login', new_user_session_path%>
@@ -24,8 +25,9 @@
     <%= link_to 'Advertise Services', new_merchant_path %>
     </nav>
     <% if user_signed_in? %>
-    Welcome, <%= current_user.email %>
-    <% end %>
+    Welcome <%= current_user.name %>!
+    <% puts current_user.name %>
+        <% end %>
     <%= yield %>
   </body>
 </html>

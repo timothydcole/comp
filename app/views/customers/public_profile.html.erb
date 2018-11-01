@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<hr>
+<h1> <%=@user.name%>'s Profile </h1>
+[Profile Picture]<br>
+<%= @user.name %><br>
+Member since <%= time_ago_in_words(@user.created_at) %><br>
+
+
+<h1> <%= @user.name%>'s listings (<%= @adlength %>)</h1>
+
+<% if @adlength > 0 %>
+<table id="mercanttable" class="display" style="width:100%">
+  <thead>
+    <th></th>
+    <th>Title </th>
+    <th>Description </th>
+    <th>Price </th>
+    <th>Created</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @ads.each do | ad |
+      merchant = Merchant.find(ad.id)
+    %>
+    <tr>
+      <td><%= image_tag ad.image, width:'50' %></td>
+      <td><%= ad.title %> </td>
+      <td><%= ad.description %></td>
+      <td><%= number_to_currency(ad.price.to_f/100.0) %></td>
+      <td><%= time_ago_in_words(merchant.created_at)%></td>
+      <td><%= link_to 'Show', merchant %></td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<% else %>
+<%= link_to 'Create new', new_merchant_path %>
+<% end %>
+
+<script>
+$(document).ready(function() {
+    $('#mercanttable').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
+} );
+</script>

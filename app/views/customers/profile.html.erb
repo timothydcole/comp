@@ -1,0 +1,84 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<hr>
+<h1> Profile </h1>
+
+[Profile Picture]<br>
+<%= @user.name %><br>
+Member since <%= time_ago_in_words(@user.created_at) %><br>
+
+<a href="/users/edit"><button>Edit Profile</button></a>
+<h1> Open Ads (<%= @adlength %>)</h1>
+
+<% if @adlength > 0 %>
+<table id="mercanttable" class="display" style="width:100%">
+  <thead>
+    <th></th>
+    <th>Title </th>
+    <th>Description </th>
+    <th>Price </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @ads.each do | ad |
+      merchant = Merchant.find(ad.id)
+    %>
+    <tr>
+      <td><%= image_tag ad.image, width:'50' %></td>
+      <td><%= ad.title %> </td>
+      <td><%= ad.description %></td>
+      <td><%= number_to_currency(ad.price.to_f/100.0) %></td>
+      <td><%= link_to 'Show', merchant %></td>
+      <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>
+      <td><%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<% else %>
+<%= link_to 'Create new', new_merchant_path %>
+<% end %>
+
+
+<h1> Purchases (<%= @purchaselength %>) </h1>
+<% if @purchaselength > 0 %>
+<table id="purchasetable">
+  <thead>
+    <th> </th>
+    <th> Title </th>
+    <th> Description </th>
+    <th> Price </th>
+    <th colspan=3> </th>
+  </thead>
+    <% @purchases.each do | purchase |
+      merchant = Merchant.find(ad.id)
+    %>
+  <tbody>
+    <tr>
+      <td><%= image_tag purchase.image, width:'50' %></td>
+      <td><%= purchase.title %> </td>
+      <td><%= purchase.description %></td>
+      <td><%= number_to_currency(purchase.price.to_f/100.0) %></td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+<%= link_to 'Find a service', '/merchants' %>
+<% end %>
+<script>
+$(document).ready(function() {
+    $('#purchasetable').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
+    $('#mercanttable').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
+} );
+</script>
