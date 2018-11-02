@@ -55,14 +55,13 @@ Member since <%= time_ago_in_words(@user.created_at) %><br>
     <th colspan=3> </th>
   </thead>
     <% @purchases.each do | purchase |
-      merchant = Merchant.find(ad.id)
     %>
   <tbody>
     <tr>
-      <td><%= image_tag purchase.image, width:'50' %></td>
-      <td><%= purchase.title %> </td>
-      <td><%= purchase.description %></td>
-      <td><%= number_to_currency(purchase.price.to_f/100.0) %></td>
+      <td><%= purchase.merchant_id %></td>
+      <td><%= purchase.customer_id %> </td>
+      <td><%= purchase.ad_id %></td>
+      <td><%= purchase.status%></td>
     </tr>
       <% end %>
   </tbody>

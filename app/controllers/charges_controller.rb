@@ -6,6 +6,14 @@ end
 def create
     #lookup the product
     @merchant = Merchant.find(params[:user_id]) ##add this
+    @temp = {
+      :merchant_id => @merchant.user_id,
+      :customer_id => current_user.id,
+      :ad_id =>  @merchant.id,
+      :status  => "new"
+    }
+    @job = Job.new(@temp)
+    @job.save
 
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],

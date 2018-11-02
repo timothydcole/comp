@@ -22,9 +22,10 @@ class CustomersController < ApplicationController
     else
       @adlength = 0
     end
-    if(Customer.exists?(user_id: current_user.id))
-      @purchases = Merchant.where(user_id: current_user.id)
+    if(Job.exists?(customer_id: current_user.id))
+      @purchases = Job.where(customer_id: current_user.id)
       @purchaselength = @purchases.length
+  
     else
       @purchaselength = 0
     end
