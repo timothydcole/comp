@@ -1,0 +1,47 @@
+<%= form_with(model: buy_ad, local: true) do |form| %>
+  <% if buy_ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(buy_ad.errors.count, "error") %> prohibited this buy_ad from being saved:</h2>
+
+      <ul>
+      <% buy_ad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.number_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
