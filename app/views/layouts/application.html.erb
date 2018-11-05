@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Marketplace</title>
+    <%= stylesheet_link_tag  "application" %>
+    <%= javascript_include_tag  "application" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,59 +12,76 @@
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">RepairThis</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+  <div class="page-wrap">
+
+  <header>
+
+    <nav>
+        <li>
+          <a href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Services', sell_ads_path, class:'nav-link' %>
+        <li>
+          <%= link_to 'Services', sell_ads_path %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Requests', buy_ads_path, class:'nav-link' %>
+        <li>
+          <%= link_to 'Requests', buy_ads_path %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Profile', '/profile', class:'nav-link'%>
-        </li>
-      </ul>
-      <ul class="navbar-nav mr-right">
-        <li class="nav-item">
           <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Profile', '/profile', class:'nav-link'%>
-          </li>
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:'nav-link' %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path, class:'nav-link'%>
-            </li><li class="nav-item">
-            <%= link_to 'Register', new_user_registration_path, class:'nav-link'%>
+        <li>
+          <%= link_to 'Profile', '/profile' %>
+        </li>
+        <li>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to 'Register', new_user_registration_path %>
+        </li>
           <% end %>
         </li>
-      </ul>
-    </div>
-  </nav>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/" style="color:#343a40!important">RepairThis</a>
-    <form action="/search">
-      <input type="text" name="q" placeholder="">
-    </form>
     </nav>
+
+    <div class="search-form">
+      <a href="/" style="color:#343a40!important">RepairThis</a>
+      <form action="/search">
+        <input type="text" name="q" placeholder="">
+      </form>
+    </div> <!-- END search-form -->
+
+    <div class="become-a-seller">
+      <button>Become a Seller</button>
+    </div> <!-- END become-a-seller -->  
+
+    <div class="logo">
+      <a href="/"><img src="assets/repair_this_logo.png" alt=""></a>
+    </div> <!-- END logo -->
+
+  </header>
+
+  <div class="main-content">
+
     <div class="container">
-        <% if user_signed_in? %>
-        Welcome <%= current_user.name %>!
-        <% end %>
-        <%= yield %>
-    </div>
+      <% if user_signed_in? %>
+      Welcome <%= current_user.name %>!
+      <% end %>
+      <%= yield %>
+    </div> <!-- END container -->
+
+  </div> <!-- END main-content -->
+    
+
+  <footer>
+    <h2>This is a footer</h2>
+  </footer>
+
+  </div> <!-- END page-wrap -->
+
   </body>
 </html>
