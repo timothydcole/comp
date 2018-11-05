@@ -56,13 +56,62 @@ Adobe XD for Wire Framing.
     Youtube and Spotify for Ambient support?
     DBDesigner for Schema.
 
+**Identify the database to be used in your App and provide a justification for your choice.**
+>We used PostgreSQl, which is an Object Relational Database Management System. Having to build this app with Rails, PostgreSQl allows the data to be mapped and accessed through classes and inheritance. This allows a greater flexibility and customization in how the data needs to be shown.
+
+**Identify and describe the production database setup (i.e. postgres instance).**
+>In production environment, the app is being hosted in Heroku cloud platform, coupled with AWS Simple Storage Service (S3), which caters for user upload files/images. This structure allows expansion and scalability for the app, while still maintaining speed and security.
 
 
 
 
 
 
+**Describe the architecture of your App.**
 
+
+**Explain the different high-level components (abstractions) in your App.**
+
+
+**Detail any third party services that your App will use.**
+-Pundit Rubygem handles authorization setting rules of function by classifying user.
+
+-Devise Rubygem handles authentication, while allowing multiple models signed in at the same time.
+
+-Stripe Rubygem takes care of the app payment by taking control of the payment data and processing.
+
+
+-Geocoder Rubygem functionality allowing access to geolocation of user and repairers.
+
+-AWS S3
+Simple Storage Service owned by AWS, pushing all users upload files/images for faster response.
+
+
+-Heroku
+Hosting service cloud platform, allowing almost zero downtime, so the site can be access from anywhere, anytime.
+
+
+**Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).**
+ 
+>A decentralized system where the work/services provided are being offered by the users, with the exception of payment, platform for advertising, user verifications, ratings and reviews which is centralized.
+>Using a data processing framework like Hadoop(HDFS), capable of handling large sql data sets, with purpose of storing and generating analytical data. This allow for a global access points, where realtime data access is paramount.
+
+**Discuss the database relations to be implemented.**
+
+
+**Describe your project’s models in terms of the relationships (active record associations) they have with each other.**
+
+
+
+**Provide User stories for your App.**
+
+>As a smartphone user, at times I found myself in search for a place who can;
+    >1. where I can buy a protection film, and install it for me.
+    >2. replace my cracked screen, or change my phone batteries and not being quoted a sky high price.
+
+>This resulted in me having to go from shops to shops, repeating each time what is the problem that I wish they can help me fix. I got turned away either by not in stock response, or high price quotes.
+    
+>I wish there is an app that can help me to post what I needed fix, and shops can come back to me with their quote, letting me to choose who will be the best shop that can help me fix.
 
 
 **Wireframing** <br/>

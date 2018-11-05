@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_015038) do
+ActiveRecord::Schema.define(version: 2018_11_03_141302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,35 +36,50 @@ ActiveRecord::Schema.define(version: 2018_11_02_015038) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.bigint "user_id"
+  create_table "bids", force: :cascade do |t|
+    t.integer "buy_id"
+    t.integer "price"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "views"
-    t.index ["user_id"], name: "index_customers_on_user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.integer "merchant_id"
-    t.integer "customer_id"
-    t.integer "ad_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "merchants", force: :cascade do |t|
+  create_table "buy_ads", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "views", default: 0
-    t.float "price"
     t.text "location"
-    t.index ["user_id"], name: "index_merchants_on_user_id"
+    t.integer "views"
+    t.integer "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price"
+    t.index ["user_id"], name: "index_buy_ads_on_user_id"
+  end
+
+  create_table "purchase_ads", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "sell_ad_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "new"
+    t.index ["sell_ad_id"], name: "index_purchase_ads_on_sell_ad_id"
+    t.index ["user_id"], name: "index_purchase_ads_on_user_id"
+  end
+
+  create_table "sell_ads", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "location"
+    t.integer "views"
+    t.integer "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price"
+    t.index ["user_id"], name: "index_sell_ads_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,6 +95,9 @@ ActiveRecord::Schema.define(version: 2018_11_02_015038) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "customers", "users"
-  add_foreign_key "merchants", "users"
+  add_foreign_key "bids", "users"
+  add_foreign_key "buy_ads", "users"
+  add_foreign_key "purchase_ads", "sell_ads"
+  add_foreign_key "purchase_ads", "users"
+  add_foreign_key "sell_ads", "users"
 end

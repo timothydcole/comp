@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Comp</title>
+    <title>Marketplace</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <nav>
-
-      <%= link_to '[Logo]', root_path %>
-      <%= link_to 'View Services', merchants_path %>
-      <%= link_to 'Request Services', customers_path %>
-      |
-      <% if user_signed_in? %>
-      <%= link_to 'Profile', '/profile'%>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path%>
-        <%= link_to 'Register', new_user_registration_path%>
-      <% end %>
-    <%= link_to 'Advertise Services', new_merchant_path %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">RepairThis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Services', sell_ads_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Requests', buy_ads_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Profile', '/profile', class:'nav-link'%>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-right">
+        <li class="nav-item">
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Profile', '/profile', class:'nav-link'%>
+          </li>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:'nav-link' %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path, class:'nav-link'%>
+            </li><li class="nav-item">
+            <%= link_to 'Register', new_user_registration_path, class:'nav-link'%>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/" style="color:#343a40!important">RepairThis</a>
+    <form action="/search">
+      <input type="text" name="q" placeholder="">
+    </form>
     </nav>
-    <% if user_signed_in? %>
-    Welcome <%= current_user.name %>!
-    <% puts current_user.name %>
+    <div class="container">
+        <% if user_signed_in? %>
+        Welcome <%= current_user.name %>!
         <% end %>
-    <%= yield %>
+        <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,46 @@
+<hr>
+<h1> <%= @user.name %>'s Profile </h1>
+
+[Profile Picture]<br>
+<%= @user.name %><br>
+Member for <%= time_ago_in_words(@user.created_at) %><br>
+<h1> Open Ads (<%= @adlength %>)</h1>
+
+<% if @adlength > 0 %>
+<table id="mercanttable" class="display" style="width:100%">
+  <thead>
+    <th></th>
+    <th>Title </th>
+    <th>Description </th>
+    <th>Price </th>
+    <th></th>
+
+  </thead>
+  <tbody>
+    <% @ads.each do | ad |
+      merchant = SellAd.find(ad.id)
+    %>
+    <tr>
+      <td><%= image_tag ad.image, width:'50' %></td>
+      <td><%= ad.title %> </td>
+      <td><%= ad.description %></td>
+      <td><%= number_to_currency(ad.price.to_f/100.0) %></td>
+      <td><%= link_to 'Show', merchant %></td>
+
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<% else %>
+<%= @user.name %> has no open ads
+<% end %>
+
+<script>
+$(document).ready(function() {
+    $('#mercanttable').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
+} );
+</script>
