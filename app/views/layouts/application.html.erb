@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Marketplace</title>
-    <%= stylesheet_link_tag  "application" %>
-    <%= javascript_include_tag  "application" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,9 +23,7 @@
   <header>
 
     <nav>
-        <li>
-          <a href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
+        
         <li>
           <%= link_to 'Services', sell_ads_path %>
         </li>
@@ -49,33 +47,23 @@
     </nav>
 
     <div class="search-form">
-      <a href="/" style="color:#343a40!important">RepairThis</a>
+      <a href="/">RepairThis</a>
       <form action="/search">
         <input type="text" name="q" placeholder="">
       </form>
     </div> <!-- END search-form -->
 
     <div class="become-a-seller">
-      <button>Become a Seller</button>
+      <a href="/sell_ads" class="button header">Become a Seller</a>
     </div> <!-- END become-a-seller -->  
 
     <div class="logo">
-      <a href="/"><img src="assets/repair_this_logo.png" alt=""></a>
+      <a href="/"><img src="assets/repair_this_logo.png" alt="The repair this logo"></a>
     </div> <!-- END logo -->
 
   </header>
 
-  <div class="main-content">
-
-    <div class="container">
-      <% if user_signed_in? %>
-      Welcome <%= current_user.name %>!
-      <% end %>
       <%= yield %>
-    </div> <!-- END container -->
-
-  </div> <!-- END main-content -->
-    
 
   <footer>
     <h2>This is a footer</h2>
@@ -84,4 +72,6 @@
   </div> <!-- END page-wrap -->
 
   </body>
+  
+  
 </html>
