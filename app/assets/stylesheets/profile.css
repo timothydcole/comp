@@ -1,0 +1,15 @@
+.main-content-profile {
+    grid-column: 2;
+    display:grid;
+    grid-template-rows: 2fr 2fr 2fr;
+    
+}
+.profile-info {
+    display:grid;
+    margin-top: 20px;
+    height: 200px;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+}
+.purchases h1 {
+    margin: 20px 0;
+}
