@@ -203,7 +203,7 @@ input[type=submit], .form button[type=submit] {
     padding:15px 30px;
     margin-top:10px;
 }
-input[type=text]:focus, input[type=submit]:focus {
+input[type=text]:focus, textarea, input[type=number], input[type=submit]:focus {
     outline:none;
     background-color:none;
 }
@@ -220,3 +220,17 @@ footer {
 footer h2 {
     grid-column:2 / 3;
 }
+input[type=text], textarea, input[type=number], input[type=file], input[type=email], input[type=password] {
+    width: 200px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea[id=sell_ad_description], textarea[id=buy_ad_description] {
+    width: 400px;
+    height:200px;
+}
+
