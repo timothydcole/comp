@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Marketplace</title>
+    <title>Repair This Marketplace</title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
@@ -36,7 +36,9 @@
         </li>
         <li>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </li>
         <% else %>
+        <li>
           <%= link_to 'Login', new_user_session_path %>
         </li>
         <li>

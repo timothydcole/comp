@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_with(model: sell_ad, local: true) do |form| %>
   <% if sell_ad.errors.any? %>
     <div id="error_explanation">
@@ -42,5 +43,6 @@
     </div>
     <br>
 
-<button class="btn btn-primary">Post Ad</button>
+<button type="submit">Post Ad</button>
 <% end %>
+</div> <!-- END form -->
