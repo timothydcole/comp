@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Marketplace</title>
+    <title>The Repair This Marketplace</title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
@@ -36,7 +36,9 @@
         </li>
         <li>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </li>
         <% else %>
+        <li>
           <%= link_to 'Login', new_user_session_path %>
         </li>
         <li>
@@ -66,7 +68,36 @@
       <%= yield %>
 
   <footer>
-    <h2>This is a footer</h2>
+  
+    <nav>
+    <h3>Repair This</h3>      
+      <li>
+        <%= link_to 'Services', sell_ads_path %>
+      </li>
+      <li>
+        <%= link_to 'Requests', buy_ads_path %>
+      </li>
+        <% if user_signed_in? %>
+      <li>
+        <%= link_to 'Profile', '/profile' %>
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to 'Login', new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to 'Register', new_user_registration_path %>
+      </li>
+        <% end %>
+      </li>
+    </nav>
+
+    <div class="social-media-icons">
+    <img src="assets/social-media-icons.svg" alt="social-media-icons">
+    </div> <!-- END social-media-icons -->
   </footer>
 
   </div> <!-- END page-wrap -->

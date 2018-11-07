@@ -1,11 +1,15 @@
-<h1> Make an offer to fix <%= @user.name %>'s device </h1>
+<div class="main-content-buy-ads">
+  <div class="requests">
+    <h1> Make an offer to fix <%= @user.name %>'s device </h1>
 
-<form action="/bid/submit" method="post">
-  <label>Price</label><br>
-  <input type="number" name="price"><br>
-  <label>Message</label><br>
-  <textarea name="message"></textarea>
-  <input type="hidden" name="buy_ad_id" value="<%= @buy_ad.id %>">
-  <br><br>
-  <button class="btn btn-success">Make offer</button>
-</form>
+    <form action="/bid/submit" method="post">
+      <label>Price</label><br>
+      <input type="number" name="price"><br>
+      <label>Message</label><br>
+      <textarea name="message"></textarea>
+      <input type="hidden" name="buy_ad_id" value="<%= @buy_ad.id %>">
+      <br><br>
+      <button class="btn btn-success">Make offer</button>
+    </form>
+  </div> <!-- END requests -->
+</div> <!-- END main-content-buy-ads -->

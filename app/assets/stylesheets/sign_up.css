@@ -1,0 +1,8 @@
+.sign-up {
+    margin: 20px auto 200px;
+    width: 300px;
+    grid-column: 2;
+}
+.sign-up h2 {
+    margin: 20px;
+}

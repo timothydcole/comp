@@ -1,38 +1,42 @@
-<h1> Bids for <%= @buy_ad.title %></h1>
+<div class="main-content-buy-ads">
+  <div class="requests">
+    <h1> Bids for <%= @buy_ad.title %></h1>
 
 
-<% if @number_of_bids > 0 %>
-<table id="bidstable" class="display">
-  <thead>
-    <th> User </th>
-    <th> Message </th>
-    <th> Price </th>
-    <th> Action </th>
-  </thead>
-  <tbody>
-    <% @bids.each do |bid| %>
-    <% user = User.find(bid.user_id) %>
-    <tr>
-      <td><a href="/profile/<%=user.id%>"><%= user.name %></a> </td>
-      <td><%=bid.message %></td>
-      <td><%= number_to_currency(bid.price) %></td>
-      <td>
-        <a href=""><button class="btn btn-success">Accept Bid</button></a>
-        <a href=""><button class="btn btn-danger">Remove Bid</button></a>
-      </td>
-    </tr>
+    <% if @number_of_bids > 0 %>
+    <table id="bidstable" class="display">
+      <thead>
+        <th> User </th>
+        <th> Message </th>
+        <th> Price </th>
+        <th> Action </th>
+      </thead>
+      <tbody>
+        <% @bids.each do |bid| %>
+        <% user = User.find(bid.user_id) %>
+        <tr>
+          <td><a href="/profile/<%=user.id%>"><%= user.name %></a> </td>
+          <td><%=bid.message %></td>
+          <td><%= number_to_currency(bid.price) %></td>
+          <td>
+            <a href=""><button class="btn btn-success">Accept Bid</button></a>
+            <a href=""><button class="btn btn-danger">Remove Bid</button></a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <% else %>
+    Currently there are no bids!
     <% end %>
-  </tbody>
-</table>
 
-<% else %>
-Currently there are no bids!
-<% end %>
-
-<script>
-$(document).ready(function() {
-    $('#bidstable').DataTable( {
-        "paging":   false,
+    <script>
+    $(document).ready(function() {
+        $('#bidstable').DataTable( {
+            "paging":   false,
+        } );
     } );
-} );
-</script>
+    </script>
+  </div> <!-- END requests -->
+</div> <!-- END main-content-buy-ads -->
