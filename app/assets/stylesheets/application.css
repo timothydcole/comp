@@ -49,7 +49,7 @@ body {
     color:black;
     margin:0;
     font-size:16px;
-    font-family:'Graphik';
+    font-family:'Graphik', Arial, Helvetica, sans-serif;
     font-weight:normal;
 }
 a {
@@ -100,16 +100,16 @@ header {
     background-color:#ec3033;
     color:#fff;
 }
-nav {
+header nav {
     list-style:none;
 }
-nav li {
+header nav li {
     display:inline-block;
     text-align:center;
     width:15%;
     margin-top:50px;
 }
-nav a {
+header nav a {
     font-size:20px;
     color:#584e4a;
     position:relative;
@@ -177,7 +177,54 @@ nav a:hover:after, nav a:focus:after {
 .main-content h3 {
     padding:50px 0 20px 0;
 }
-input[type=text] {
+footer {
+    grid-column:1 / 4;
+    display:grid;
+    grid-template-columns: 1fr 5fr 5fr 1fr;
+    height:400px;
+    background-color:#242326;
+    border-top: 10px solid #ec3033;
+}
+footer h3 {
+    color:white;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+footer nav {
+    grid-column:2 / 3;
+    list-style: none;
+    margin-top: 50px;
+    margin-bottom:50px;
+}
+footer nav a {
+    color:white;
+    position:relative;
+    padding-bottom:8px;
+}
+footer nav li {
+    padding-top: 10px;
+    display: block;
+}
+.social-media-icons {
+    margin-top: 150px;
+}
+.social-media-icons img {
+    width: 200px;
+    float:right;
+}
+input[type=text], textarea, input[type=number], input[type=file], input[type=email], input[type=password] {
+    width: 200px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea[id=sell_ad_description], textarea[id=buy_ad_description] {
+    width: 400px;
+    height:200px;
+}
+.search-form input[type=text], .main-content-search input[type=text] {
     background-color:transparent;
 	border-radius:28px;
 	border:1px solid #000;
@@ -190,8 +237,10 @@ input[type=text] {
     background-repeat:no-repeat;
     background-size:contain;
     background-position:left top;
+    width:250px;
+    height: 50px;
 }
-input[type=submit] {
+input[type=submit], .form button[type=submit], .sign-up button[type=submit] {
     background-color:#ec3033;	
     border-radius:28px;
 	border:1px solid #ec3033;
@@ -203,16 +252,10 @@ input[type=submit] {
     padding:15px 30px;
     margin-top:10px;
 }
-input[type=text]:focus, input[type=submit]:focus {
+input[type=text]:focus, textarea, input[type=number], input[type=submit]:focus {
     outline:none;
     background-color:none;
 }
 input[type=submit]:hover {
     margin-top:11px;
-}
-footer {
-    grid-column:1 / 4;
-    display:grid;
-    height:700px;
-    background-color: #ccc;
 }

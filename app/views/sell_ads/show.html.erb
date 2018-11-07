@@ -1,65 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="main-content-sell-ads">
+  <div class="services">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @sell_ad.title %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @sell_ad.title %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @sell_ad.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @sell_ad.description %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @sell_ad.location %>
-</p>
+    <p>
+      <strong>Location:</strong>
+      <%= @sell_ad.location %>
+    </p>
 
-<p>
-  <strong>Views:</strong>
-  <%= @sell_ad.views %>
-</p>
+    <p>
+      <strong>Views:</strong>
+      <%= @sell_ad.views %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@sell_ad.price/100.0) %>
-</p>
-<p>
-  <strong>Phone:</strong>
-  <%= @sell_ad.phone %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency(@sell_ad.price/100.0) %>
+    </p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @sell_ad.phone %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @sell_ad.user.name %>
-</p>
+    <p>
+      <strong>User:</strong>
+      <%= @sell_ad.user.name %>
+    </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @sell_ad.image, width:'150'%>
-</p>
+    <p>
+      <strong>Image:</strong>
+      <%= image_tag @sell_ad.image, width:'150'%>
+    </p>
 
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+      </article>
+      <%= hidden_field_tag(:sell_ad_id, @sell_ad.id) %>
+    <% if user_signed_in? %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="<%= @sell_ad.title %>"
+              data-amount="<%= @sell_ad.price %>"
+              data-currency="AUD"
+              data-locale="auto"></script>
+    <% else %>
+    <%= link_to '<button type="button">You must be logged in to purchase</button>'.html_safe, new_user_session_path %>
     <% end %>
-  </article>
-  <%= hidden_field_tag(:sell_ad_id, @sell_ad.id) %>
-<% if user_signed_in? %>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= @sell_ad.title %>"
-          data-amount="<%= @sell_ad.price %>"
-          data-currency="AUD"
-          data-locale="auto"></script>
-<% else %>
-<%= link_to '<button type="button">You must be logged in to purchase</button>'.html_safe, new_user_session_path %>
-<% end %>
 
-<% end %>
+    <% end %>
 
-<%= link_to 'Edit', edit_sell_ad_path(@sell_ad), class:'btn btn-primary' %>
-<%= link_to 'Back', sell_ads_path, class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_sell_ad_path(@sell_ad), class:'btn btn-primary' %>
+    <%= link_to 'Back', sell_ads_path, class: 'btn btn-primary' %>
+
+  </div> <!-- END services -->
+</div> <!-- END main-content-sell-ads -->

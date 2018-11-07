@@ -1,0 +1,24 @@
+.main-content-buy-ads {
+    grid-column: 2 / 3;
+    display:grid;
+    grid-template-columns: 1fr 6fr 4fr 1fr;
+    grid-template-rows:1fr 3fr 1fr;
+}
+.requests {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    min-height: 800px;
+    height:100%;
+    margin-bottom:100px;
+}
+.requests h1 {
+    height: 50px;
+    padding-top: 100px;
+}
+.requests table {
+    height: 100px;
+    padding-top: 20px;
+}
+.requests th, .requests td {
+    padding-right:10px;
+}

@@ -1,46 +1,48 @@
-<%= form_with(model: sell_ad, local: true) do |form| %>
-  <% if sell_ad.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sell_ad.errors.count, "error") %> prohibited this sell_ad from being saved:</h2>
+<div class="form">
+  <%= form_with(model: sell_ad, local: true) do |form| %>
+    <% if sell_ad.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(sell_ad.errors.count, "error") %> prohibited this sell_ad from being saved:</h2>
 
-      <ul>
-      <% sell_ad.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% sell_ad.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field group">
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
     </div>
+
+    <div class="field group">
+      <%= form.label :description %><br>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field group">
+      <%= form.label :location %><br>
+      <%= form.text_area :location %>
+    </div>
+
+    <div class="field group">
+      <%= form.label :price %><br>
+      <%= form.number_field :price %>
+    </div>
+
+    <div class="field group">
+      <%= form.label :phone %><br>
+      <%= form.number_field :phone %>
+    </div>
+
+    <div class="field group">
+        <%= form.label :image %><br>
+        <%= form.file_field :image %>
+      </div>
+      <br>
+
+  <button type="submit">Post Ad</button>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %><br>
-    <%= form.text_area :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %><br>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %><br>
-    <%= form.number_field :phone %>
-  </div>
-
-  <div class="field">
-      <%= form.label :image %><br>
-      <%= form.file_field :image %>
-    </div>
-    <br>
-
-<button class="btn btn-primary">Post Ad</button>
-<% end %>
+</div> <!-- END form -->

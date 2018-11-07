@@ -1,54 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="main-content-buy-ads">
+  <div class="requests">
+    <p id="notice"><%= notice %></p>
 
-<h1>Requests</h1>
+    <h1>Requests</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Views</th>
-      <th>Phone</th>
-      <th>User</th>
-      <th>Bids</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h3>Here you can post a request to have your device fixed</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Views</th>
+          <th>Phone</th>
+          <th>User</th>
+          <th>Bids</th>
+          <th></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @buy_ads.each do |buy_ad|
-    if(Bid.exists?(buy_id: buy_ad.id))
-      bids = Bid.where(buy_id: buy_ad.id)
-      number_of_bids = bids.length
-    else
-      number_of_bids = 0
-    end
-      %>
-      <tr>
-        <td><%= buy_ad.title %></td>
-        <td><%= buy_ad.description %></td>
-        <td><%= buy_ad.location %></td>
-        <td><%= buy_ad.views %></td>
-        <td><%= buy_ad.phone %></td>
-        <td><%= buy_ad.user.name %></td>
-        <td><%= number_of_bids %></td>
-        <td>
-        <% if buy_ad.user == current_user %>
-        <%= link_to 'See Bids', '/bids/'+buy_ad.id.to_s, class: 'btn btn-primary' %>
-        <% else %>
-        <a href='/bid/<%= buy_ad.id %>'<button class="btn btn-primary">Make Bid</button> </a>
-        <%end %>
-        </td>
-        <td><%= link_to 'Show', buy_ad, class: 'btn btn-primary' %></td>
-        <td><%= link_to 'Edit', edit_buy_ad_path(buy_ad), class: 'btn btn-primary' %></td>
-        <td><%= link_to 'Destroy', buy_ad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @buy_ads.each do |buy_ad|
+        if(Bid.exists?(buy_id: buy_ad.id))
+          bids = Bid.where(buy_id: buy_ad.id)
+          number_of_bids = bids.length
+        else
+          number_of_bids = 0
+        end
+          %>
+          <tr>
+            <td><%= buy_ad.title %></td>
+            <td><%= buy_ad.description %></td>
+            <td><%= buy_ad.location %></td>
+            <td><%= buy_ad.views %></td>
+            <td><%= buy_ad.phone %></td>
+            <td><%= buy_ad.user.name %></td>
+            <td><%= number_of_bids %></td>
+            <td>
+            <% if buy_ad.user == current_user %>
+            <%= link_to 'See Bids', '/bids/'+buy_ad.id.to_s, class: 'btn btn-primary' %>
+            <% else %>
+            <a href='/bid/<%= buy_ad.id %>'<button class="btn btn-primary">Make Bid</button> </a>
+            <%end %>
+            </td>
+            <td><%= link_to 'Show', buy_ad, class: 'btn btn-primary' %></td>
+            <td><%= link_to 'Edit', edit_buy_ad_path(buy_ad), class: 'btn btn-primary' %></td>
+            <td><%= link_to 'Destroy', buy_ad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+    <br>
 
-<%= link_to 'Post a request', new_buy_ad_path, class: 'btn btn-primary' %>
+    <%= link_to 'Post a request', new_buy_ad_path, class: 'button header' %>
+
+  </div> <!-- END requests -->
+</div> <!-- END main-content-buy-ads -->

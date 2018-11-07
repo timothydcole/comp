@@ -1,81 +1,90 @@
-<h1> Your Profile </h1>
+<div class="main-content-profile">
 
-[Profile Picture]<br>
-<%= @user.name %><br>
-Member for <%= time_ago_in_words(@user.created_at) %><br>
+  <div class="profile-info">
+    <h1> Your Profile </h1>
 
-<a href="/users/edit"><button class="btn btn-primary">Edit Profile</button></a>
-<h1> Open Ads (<%= @adlength %>)</h1>
+    <h3>Hello, <%= @user.name %>,</h3>
 
-<% if @adlength > 0 %>
-<table id="mercanttable" class="display" style="width:100%">
-  <thead>
-    <th></th>
-    <th>Title </th>
-    <th>Description </th>
-    <th>Price </th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @ads.each do | ad |
-      merchant = SellAd.find(ad.id)
-    %>
-    <tr>
-      <td><%= image_tag ad.image, width:'50' %></td>
-      <td><%= ad.title %> </td>
-      <td><%= ad.description %></td>
-      <td><%= number_to_currency(ad.price.to_f/100.0) %></td>
-      <td><%= link_to 'Show', merchant, class:'btn btn-primary'%></td>
-      <td><%= link_to 'Edit', edit_sell_ad_path(merchant), class:'btn btn-primary' %></td>
-      <td><%= link_to 'Destroy', '', method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
-    </tr>
-      <% end %>
-  </tbody>
-</table>
+    <h4>You have been a member of Repair This for <%= time_ago_in_words(@user.created_at) %>.</h4>
 
-<% else %>
-<%= link_to 'Create new', new_sell_ad_path, class: 'btn btn-primary' %>
-<% end %>
+    <div><a href="/users/edit"><button class="button header">Edit Profile</button></a>,</div>
 
+  </div> <!-- END profile-info -->
+  
+  <div class="active-ads">
+  <h1> Open Ads (<%= @adlength %>)</h1>
+    <% if @adlength > 0 %>
+    <table id="mercanttable" class="display" style="width:100%">
+      <thead>
+        <th></th>
+        <th>Title </th>
+        <th>Description </th>
+        <th>Price </th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @ads.each do | ad |
+          merchant = SellAd.find(ad.id)
+        %>
+        <tr>
+          <td><%= image_tag ad.image, width:'50' %></td>
+          <td><%= ad.title %> </td>
+          <td><%= ad.description %></td>
+          <td><%= number_to_currency(ad.price.to_f/100.0) %></td>
+          <td><%= link_to 'Show', merchant, class:'btn btn-primary'%></td>
+          <td><%= link_to 'Edit', edit_sell_ad_path(merchant), class:'btn btn-primary' %></td>
+          <td><%= link_to 'Destroy', '', method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
 
-<h1> Purchases (<%= @purchaselength %>) </h1>
-<% if @purchaselength > 0 %>
-<table id="purchasetable" class="display" style="width:100%"">
-  <thead>
-    <th></th>
-    <th>Title </th>
-    <th>Description </th>
-    <th>Price </th>
-    <th>Contact Seller</th>
-  </thead>
-    <% @purchases.each do | purchase |
-      ad_details = SellAd.find(purchase.sell_ad_id)
-    %>
-  <tbody>
-    <tr>
-      <td><%= image_tag ad_details.image, width:'50'  %></td>
-      <td><%= ad_details.title %></td>
-      <td><%= ad_details.description %> </td>
-      <td><%= number_to_currency(ad_details.price.to_f/100.0) %> </td>
-      <th><%= ad_details.user.email%></th>
-    </tr>
-      <% end %>
-  </tbody>
-</table>
-<% else %>
-<%= link_to 'Find a service', '/sell', class: 'btn btn-primary' %>
-<% end %>
-<script>
-$(document).ready(function() {
-    $('#purchasetable').DataTable( {
-        "paging":   false,
-        "info":     false
+    <% else %>
+    <%= link_to 'Create new', new_sell_ad_path, class: 'button header' %>
+    <% end %>
+  </div> <!-- END active-ads -->
+
+  <div class="purchases">
+    <h1> Purchases (<%= @purchaselength %>) </h1>
+    <% if @purchaselength > 0 %>
+    <table id="purchasetable" class="display" style="width:100%"">
+      <thead>
+        <th></th>
+        <th>Title </th>
+        <th>Description </th>
+        <th>Price </th>
+        <th>Contact Seller</th>
+      </thead>
+        <% @purchases.each do | purchase |
+          ad_details = SellAd.find(purchase.sell_ad_id)
+        %>
+      <tbody>
+        <tr>
+          <td><%= image_tag ad_details.image, width:'50'  %></td>
+          <td><%= ad_details.title %></td>
+          <td><%= ad_details.description %> </td>
+          <td><%= number_to_currency(ad_details.price.to_f/100.0) %> </td>
+          <th><%= ad_details.user.email%></th>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <% else %>
+    <%= link_to 'Find a service', '/sell_ads', class: 'button header' %>
+    <% end %>
+    <script>
+    $(document).ready(function() {
+        $('#purchasetable').DataTable( {
+            "paging":   false,
+            "info":     false
+        } );
+        $('#mercanttable').DataTable( {
+            "paging":   false,
+            "info":     false
+        } );
     } );
-    $('#mercanttable').DataTable( {
-        "paging":   false,
-        "info":     false
-    } );
-} );
-</script>
+    </script>
+  </div> <!-- END purchases -->
+</div> <!-- END main-content-profile -->

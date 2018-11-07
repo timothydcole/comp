@@ -1,39 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="main-content-buy-ads">
+  <div class="requests">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @buy_ad.title %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @buy_ad.title %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @buy_ad.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @buy_ad.description %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @buy_ad.location %>
-</p>
+    <p>
+      <strong>Location:</strong>
+      <%= @buy_ad.location %>
+    </p>
 
-<p>
-  <strong>Views:</strong>
-  <%= @buy_ad.views %>
-</p>
+    <p>
+      <strong>Views:</strong>
+      <%= @buy_ad.views %>
+    </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @buy_ad.image, width:'100' %>
-</p>
+    <p>
+      <strong>Image:</strong>
+      <%= image_tag @buy_ad.image, width:'100' %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @buy_ad.phone %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @buy_ad.phone %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @buy_ad.user.name %>
-</p>
+    <p>
+      <strong>User:</strong>
+      <%= @buy_ad.user.name %>
+    </p>
 
-<%= link_to 'Edit', edit_buy_ad_path(@buy_ad) %> |
-<%= link_to 'Back', buy_ads_path %>
+    <%= link_to 'Edit', edit_buy_ad_path(@buy_ad) %> |
+    <%= link_to 'Back', buy_ads_path %>
+  </div> <!-- END requests -->
+</div> <!-- END main-content-buy-ads -->
