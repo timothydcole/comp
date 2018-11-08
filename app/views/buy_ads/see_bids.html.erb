@@ -19,13 +19,6 @@
       <td><%=bid.message %></td>
       <td><%= number_to_currency(bid.price) %></td>
       <td>
-<<<<<<< HEAD
-        <form method="post" action="/bid/accept/">
-          <input type="text" name="buy_id" value="<%= @buy_ad.id %>" style="display:none">
-          <button class="btn btn-success">Accept Bid</button></a>
-        </form>
-        <a href="/bids/delete/<%=bid.id%>"><button class="btn btn-danger">Remove Bid</button></a>
-=======
         <form method="post" action="/bid/accept">
           <input type="text" name="buy_id" value="<%= @buy_ad.id %>" hidden>
           <input type="text" name="bid_id" value="<%= bid.id %>" hidden>
@@ -33,7 +26,6 @@
           <button class="btn btn-success">Accept Bid</button></a>
         </form>
         <a href="/bid/delete/<%=bid.id%>"><button class="btn btn-danger">Remove Bid</button></a>
->>>>>>> f565f5b2ac775330e1ee0b665f410d2e1791028d
       </td>
     </tr>
     <% end %>
