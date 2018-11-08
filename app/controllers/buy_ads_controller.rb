@@ -42,7 +42,7 @@ class BuyAdsController < ApplicationController
     }
     @bid = Bid.new(@store)
     @bid.save!
-    redirect_to :back
+    redirect_to '/buy'
   end
 
   def delete_bid

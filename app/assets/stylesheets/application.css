@@ -152,7 +152,8 @@ nav a:hover:after, nav a:focus:after {
     display:grid;
     grid-column:2 / 3;
     grid-template-columns:5fr 5fr;
-    height:800px;
+    min-height:600px;
+    height:100%;
     padding-top:100px;
 }
 .email-us {
