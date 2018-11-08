@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_141302) do
+ActiveRecord::Schema.define(version: 2018_11_08_002756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 2018_11_03_141302) do
     t.index ["user_id"], name: "index_purchase_ads_on_user_id"
   end
 
+  create_table "purchase_bids", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "buy_ad_id"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buy_ad_id"], name: "index_purchase_bids_on_buy_ad_id"
+    t.index ["user_id"], name: "index_purchase_bids_on_user_id"
+  end
+
   create_table "sell_ads", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -99,5 +109,7 @@ ActiveRecord::Schema.define(version: 2018_11_03_141302) do
   add_foreign_key "buy_ads", "users"
   add_foreign_key "purchase_ads", "sell_ads"
   add_foreign_key "purchase_ads", "users"
+  add_foreign_key "purchase_bids", "buy_ads"
+  add_foreign_key "purchase_bids", "users"
   add_foreign_key "sell_ads", "users"
 end
