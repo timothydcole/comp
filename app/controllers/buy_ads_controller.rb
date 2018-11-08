@@ -11,7 +11,9 @@ class BuyAdsController < ApplicationController
   end
 
   def accept_bid
-    puts params
+    @buy_ad = BuyAd.find(params[:buy_id])
+    @offer = User.find(params[:bid_user_id])
+    @bid = Bid.find(params[:bid_id])
 
   end
 
@@ -40,7 +42,7 @@ class BuyAdsController < ApplicationController
     }
     @bid = Bid.new(@store)
     @bid.save!
-    redirect_to '/buy_ads'
+    redirect_to :back
   end
 
   def delete_bid

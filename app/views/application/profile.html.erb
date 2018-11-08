@@ -74,6 +74,36 @@
     <% else %>
     <%= link_to 'Find a service', '/sell_ads', class: 'button header' %>
     <% end %>
+                                                                 
+    <h1> Bids Accepted (<%= @purchasebidslength %>) </h1>
+<% if @purchasebidslength > 0 %>
+<table id="purchasebidstable" class="display" style="width:100%"">
+  <thead>
+
+    <th>Request Title </th>
+    <th>Request Description </th>
+    <th>Bid Price </th>
+    <th>Contact Seller</th>
+  </thead>
+    <% @purchasebids.each do | purchase |
+      ad_details = BuyAd.find(purchase.buy_ad_id)
+      offer_details = Bid.where(user_id:purchase.offer_user_id)
+      offer_user = User.find(offer_details.first.user_id)
+    %>
+  <tbody>
+    <tr>
+      <td><%= ad_details.title %></td>
+      <td><%= ad_details.description %> </td>
+      <td><%= number_to_currency(offer_details.first.price) %> </td>
+      <td><%= offer_user.email%></td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+<%= link_to 'Request a service', '/buy', class: 'btn btn-primary' %>
+<% end %>                                                             
+                                                                 
     <script>
     $(document).ready(function() {
         $('#purchasetable').DataTable( {
@@ -84,6 +114,10 @@
             "paging":   false,
             "info":     false
         } );
+        $('#purchasebidstable').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
     } );
     </script>
   </div> <!-- END purchases -->
