@@ -11,6 +11,7 @@ class BuyAdsController < ApplicationController
   end
 
   def accept_bid
+    puts params
 
   end
 
@@ -27,7 +28,6 @@ class BuyAdsController < ApplicationController
   def make_bid
     @buy_ad = BuyAd.find(params[:id])
     @user = User.find(@buy_ad.user_id)
-
   end
 
   def submit_bid
@@ -40,11 +40,13 @@ class BuyAdsController < ApplicationController
     }
     @bid = Bid.new(@store)
     @bid.save!
-    redirect_to '/buy'
+    redirect_to '/buy_ads'
   end
 
   def delete_bid
-
+    @bid = Bid.find(params[:id])
+    @bid.destroy
+    redirect_to '/buy'
   end
 
   # GET /buy_ads/1
