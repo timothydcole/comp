@@ -6,7 +6,7 @@ group :development do
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false
 end
-ruby '2.4.4'
+ruby '2.4.1'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'aws-sdk-s3', require: false
 gem 'devise'
