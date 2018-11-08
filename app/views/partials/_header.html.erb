@@ -1,0 +1,47 @@
+<header>
+
+  <nav>
+
+      <li>
+        <%= link_to 'Services', sell_ads_path %>
+      </li>
+      <li>
+        <%= link_to 'Requests', buy_ads_path %>
+      </li>
+        <% if user_signed_in? %>
+      <li>
+        <%= link_to 'Profile', '/profile' %>
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to 'Login', new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to 'Register', new_user_registration_path %>
+      </li>
+        <% end %>
+      </li>
+  </nav>
+
+
+  <div class="search-form">
+    <a href="/">RepairThis</a>
+    <form action="/search">
+      <input type="text" name="q" placeholder="">
+    </form>
+  </div> <!-- END search-form -->
+
+  <div class="become-a-seller">
+    <a href="/sell_ads" class="button header">Become a Seller</a>
+  </div> <!-- END become-a-seller -->
+
+  <div class="logo">
+    <%= link_to root_path do %>
+      <%= image_tag 'repair_this_logo.png' %>
+    <% end %>
+  </div> <!-- END logo -->
+
+</header>
