@@ -23,9 +23,9 @@
           <input type="text" name="buy_id" value="<%= @buy_ad.id %>" hidden>
           <input type="text" name="bid_id" value="<%= bid.id %>" hidden>
           <input type="text" name="bid_user_id" value="<%= user.id %>" hidden>
-          <button class="btn btn-success">Accept Bid</button></a>
+          <button type="submit">Accept Bid</button></a>
         </form>
-        <a href="/bid/delete/<%=bid.id%>"><button class="btn btn-danger">Remove Bid</button></a>
+        <a href="/bid/delete/<%=bid.id%>"><button type="submit">Remove Bid</button></a>
       </td>
     </tr>
     <% end %>

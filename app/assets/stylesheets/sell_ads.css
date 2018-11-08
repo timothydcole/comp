@@ -4,6 +4,9 @@
     grid-template-columns: 1fr 6fr 4fr 1fr;
     grid-template-rows:1fr 3fr 1fr;
 }
+.main-content-sell-ads.show {
+    margin: 50px auto;
+}
 .services {
     grid-column: 1 / 3;
     grid-row: 1 / 4;
