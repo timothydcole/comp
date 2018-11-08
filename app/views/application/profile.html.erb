@@ -7,7 +7,7 @@
 
     <h4>You have been a member of Repair This for <%= time_ago_in_words(@user.created_at) %>.</h4>
 
-    <div><a href="/users/edit"><button class="button header">Edit Profile</button></a>,</div>
+    <div><a href="/users/edit"><button class="button header">Edit Profile</button></a></div>
 
   </div> <!-- END profile-info -->
   
@@ -101,9 +101,9 @@
   </tbody>
 </table>
 <% else %>
-<%= link_to 'Request a service', '/buy', class: 'btn btn-primary' %>
+<%= link_to 'Request a service', '/buy', class: 'button header'%>
 <% end %>                                                             
-                                                                 
+<br><br>                                                 
     <script>
     $(document).ready(function() {
         $('#purchasetable').DataTable( {

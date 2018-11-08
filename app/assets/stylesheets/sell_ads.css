@@ -4,16 +4,23 @@
     grid-template-columns: 1fr 6fr 4fr 1fr;
     grid-template-rows:1fr 3fr 1fr;
 }
+.main-content-sell-ads.show {
+    margin: 50px auto;
+}
 .services {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 1 / 4;
-    min-height: 800px;
+    min-height: 300px;
     height: 100%;
     margin-bottom:100px;
 }
 .services h1 {
     height: 50px;
     padding-top: 100px;
+    line-height: 1.1;
+}
+.services h3 {
+    padding-top:10px;
 }
 .services table {
     height: 100px;
