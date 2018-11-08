@@ -1,0 +1,24 @@
+<%= @offer.name %><br>
+<%= @bid.message %><br>
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: <%= number_to_currency(@bid.price) %> </span>
+    </label>
+  </article>
+  <%= hidden_field_tag(:buy_ad_id, @buy_ad.id) %>
+  <%= hidden_field_tag(:bid_id, @bid.id) %>
+    <%= hidden_field_tag(:offer_user_id, @offer.id) %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Accept and pay for the bid"
+          data-amount="<%= @bid.price*100.0 %>"
+          data-locale="auto"
+          data-currency="AUD"
+          data-email="<%= current_user.email%>"></script>
+<% end %>

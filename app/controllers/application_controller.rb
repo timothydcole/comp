@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
     def index
     end
 
@@ -19,6 +18,13 @@ class ApplicationController < ActionController::Base
         @purchaselength = @purchases.length
       else
         @purchaselength = 0
+      end
+
+      if(PurchaseBid.exists?(user_id: current_user.id))
+        @purchasebids = PurchaseBid.where(user_id: current_user.id)
+        @purchasebidslength = @purchasebids.length
+      else
+        @purchasebidslength = 0
       end
     end
 

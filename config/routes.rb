@@ -8,11 +8,19 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'application#public_profile'
   get '/buy', to: 'buy_ads#index'
   get '/search', to: 'sell_ads#search'
+<<<<<<< HEAD
   post '/bid/submit', to: 'buy_ads#submit_bid'
   get '/bids/delete/:id', to: 'buy_ads#delete_bid'
   post 'bid/accept/', to: 'buy_ads#accept_bid'
   get '/bid/:id', to: 'buy_ads#make_bid'
   get '/bids/:id', to: 'buy_ads#see_bids'
+=======
+  post 'bid/accept', to: 'buy_ads#accept_bid'
+  get '/bid/:id', to: 'buy_ads#make_bid'
+  get 'bids/:id', to: 'buy_ads#see_bids'
+  post '/bid/submit', to: 'buy_ads#submit_bid'
+  get '/bid/delete/:id', to: 'buy_ads#delete_bid' #not secure
+>>>>>>> f565f5b2ac775330e1ee0b665f410d2e1791028d
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
