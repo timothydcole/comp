@@ -31,11 +31,23 @@ class SellAdsController < ApplicationController
   # POST /sell_ads
   # POST /sell_ads.json
   def create
+
+    params = sell_ad_params
+    if params[:title] == "" || params[:description] == "" || params[:location] == "" || params[:price] == "" || phone == ""
+      #show errors
+      return
+    else
     @sell_ad = SellAd.new(sell_ad_params)
     @sell_ad.price = @sell_ad.price*100
     @sell_ad.user = current_user
     @sell_ad.views = 0
-
+    if @sell_ad.phone.to_s.length > 10
+      respond_to do |format|
+        format.html { redirect_to @sell_ad, notice: 'Phone number must be Australian (10 digits or less)' }
+        format.json { render :new, status: :created, location: @sell_ad }
+      end
+      return
+    end
     respond_to do |format|
       if @sell_ad.save
         format.html { redirect_to @sell_ad, notice: 'Sell ad was successfully created.' }
@@ -45,6 +57,7 @@ class SellAdsController < ApplicationController
         format.json { render json: @sell_ad.errors, status: :unprocessable_entity }
       end
     end
+  end
   end
 
   # PATCH/PUT /sell_ads/1
